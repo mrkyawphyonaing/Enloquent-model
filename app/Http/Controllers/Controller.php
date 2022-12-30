@@ -19,6 +19,12 @@ class Controller extends BaseController
         return $publishers;
     }
 
+    public function getPublishersDetail ($id) {
+        $publisher = Publisher::with('books')->find($id);
+        //$publisher['books'] = $publisher->books;
+        return $publisher;
+    }
+
     public function storePublishers() {
         $publisher = Publisher::create([
             'name' => 'K Group',
@@ -41,12 +47,13 @@ class Controller extends BaseController
     }
 
     public  function getBook(){
-       $books = Book::with('publisher')->where('price', '<', 200)->get();
+       $books = Book::where('price', '<', 200)->get();
        return $books;
     }
 
     public function detailBook($id){
         $books = Book::find($id);
-        return $books->publisher;
+        return $books->additionalBookinfo;
+        //return $books->publisher;
     }
 }

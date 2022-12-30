@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-
+    protected $with = ['publisher'];
     public  function publisher() {
         return $this->belongsTo(Publisher::class);
+    }
+    public function additionalBookinfo(){
+        return $this->hasOne(AdditionalBookinfo::class);
     }
 }

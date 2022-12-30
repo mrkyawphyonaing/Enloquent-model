@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\AdditionalBookinfo;
 use App\Models\Book;
 use App\Models\Publisher;
 use Illuminate\Database\Seeder;
@@ -24,6 +25,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         Publisher::factory()->count(100)->create();
-        Book::factory()->count(1000)->create();
+        Book::factory()->has(AdditionalBookinfo::factory()->count(1))->count(100)->create();
     }
 }

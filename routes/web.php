@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('publishers', [Controller::class,'getPublishers']);
 
+Route::get('publishers/{id}', [Controller::class,'getPublishersDetail']);
+
 Route::get('store-publishers', [Controller::class,'storePublishers']);
 
 Route::get('update-publishers/{id}', [Controller::class,'updatePublishers']);
