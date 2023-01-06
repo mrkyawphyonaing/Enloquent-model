@@ -32,4 +32,9 @@ Route::get('books', [Controller::class,'getBook']);
 
 Route::get('detail-books/{id}', [Controller::class,'detailBook']);
 
+Route::post('category', [Controller::class,'storeCategory']);
+Route::get('saveCategory', [Controller::class, 'saveCategory']);
+
+
+
 

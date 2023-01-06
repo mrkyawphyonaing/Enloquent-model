@@ -58,4 +58,12 @@ class Controller extends BaseController
         return $books->categories;
 
     }
+
+    public function storeCategory() {
+        return 'Hello Post';
+    }
+
+    public function saveCategory(){
+        return view('save_category');
+    }
 }
