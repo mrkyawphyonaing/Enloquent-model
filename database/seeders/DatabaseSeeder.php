@@ -4,10 +4,13 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\AdditionalBookinfo;
 use App\Models\Book;
+use App\Models\BookCategory;
 use App\Models\Publisher;
+use Database\Factories\BookCategoryFactory;
 use Illuminate\Database\Seeder;
+use App\Models\AdditionalBookinfo;
+use Database\Seeders\CategorySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +29,12 @@ class DatabaseSeeder extends Seeder
         // ]);
         Publisher::factory()->count(100)->create();
         Book::factory()->has(AdditionalBookinfo::factory()->count(1))->count(100)->create();
-    }
+        $this->call(
+            [CategorySeeder::class,
+
+            ]);
+
+            BookCategory::factory()->count(100)->create();
+        }
+
 }

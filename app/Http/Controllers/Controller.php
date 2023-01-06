@@ -53,7 +53,9 @@ class Controller extends BaseController
 
     public function detailBook($id){
         $books = Book::find($id);
-        return $books->additionalBookinfo;
+        //return $books->additionalBookinfo;
         //return $books->publisher;
+        return $books->categories;
+
     }
 }
