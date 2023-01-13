@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use App\Models\Publisher;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Symfony\Component\HttpFoundation\Request;
 
 class Controller extends BaseController
 {
@@ -59,11 +61,20 @@ class Controller extends BaseController
 
     }
 
-    public function storeCategory() {
-        return 'Hello Post';
+    public function storeCategory(Request $request) {
+        //return 'Hello Post';
+        $name=$request->category_name;
+        Category::create([
+            'name' => $name
+        ]);
+        return redirect('saveCategory');
+        //return 'Sumbit data is '.$name;
     }
 
-    public function saveCategory(){
-        return view('save_category');
+    public function createCategory(){
+        $categories = Category::all();
+        return view('create_category')->with([
+            'categories'=>$categories
+        ]);
     }
 }

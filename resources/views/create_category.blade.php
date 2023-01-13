@@ -17,13 +17,22 @@
                 <form action="{{url('category')}}" method="post">
                     @csrf
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Name</label>
-                      <input type="text" class="form-control" id="exampleInputEmail1"  placeholder="Enter Name">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" name="category_name"  placeholder="Enter Category Name">
 
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>
             </div>
+        </div>
+        <hr>
+        <div class="row">
+            <ol>
+                @foreach ($categories as $category)
+                <li>{{$category->name}}</li>
+
+                @endforeach
+            </ol>
         </div>
     </div>
 
