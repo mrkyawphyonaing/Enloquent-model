@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCategoryRequest;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Publisher;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
@@ -61,13 +63,22 @@ class Controller extends BaseController
 
     }
 
-    public function storeCategory(Request $request) {
+    public function storeCategory(CreateCategoryRequest $request) {
+        // $validated = $request->validate([
+        //     'category_name' => 'required',
+        // ]);
+
+    // $result = Validator::make($request->all(),['category_name' => 'required']);
+    // if ($result->fails()) {
+    //         return 'Something went wrong! Please try again';
+    // }
+
         //return 'Hello Post';
         $name=$request->category_name;
         Category::create([
             'name' => $name
         ]);
-        return redirect('saveCategory');
+        return redirect('createCategory')->with('success', 'Category created successfully');
         //return 'Sumbit data is '.$name;
     }
 
